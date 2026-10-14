@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head('Panel inmobiliario')}"></head>
+
+<body class="app-body">
+
+<nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+<div th:replace="~{fragments/layout :: alerts}"></div>
+
+<link rel="stylesheet" th:href="@{/css/panel.css}">
+
+<main class="panel-container">
+
+    <!-- ENCABEZADO -->
+    <section class="panel-header">
+
+        <div>
+            <p class="panel-etiqueta">GESTIÓN INMOBILIARIA</p>
+
+            <h1>Control de tus propiedades</h1>
+
+            <p class="panel-descripcion">
+                Consulta tus inmuebles, administra clientes
+                y supervisa las operaciones de alquiler
+                desde un solo lugar.
+            </p>
+        </div>
+
+        <div class="panel-header-icono">
+            <span>⌂</span>
+        </div>
+
+    </section>
+
+    <!-- INDICADORES -->
+    <section class="panel-estadisticas">
+
+        <a th:href="@{/propiedades}" class="estadistica">
+            <div class="estadistica-icono">⌂</div>
+            <p>Propiedades</p>
+            <h2 th:text="${propiedadesTotal}">0</h2>
+            <span>Explorar inmuebles →</span>
+        </a>
+
+        <a th:href="@{/clientes}" class="estadistica">
+            <div class="estadistica-icono">♙</div>
+            <p>Clientes</p>
+            <h2 th:text="${clientesTotal}">0</h2>
+            <span>Administrar clientes →</span>
+        </a>
+
+        <a th:href="@{/reservas}" class="estadistica">
+            <div class="estadistica-icono">▦</div>
+            <p>Reservaciones</p>
+            <h2 th:text="${reservasTotal}">0</h2>
+            <span>Consultar reservas →</span>
+        </a>
+
+        <a th:href="@{/pagos}" class="estadistica">
+            <div class="estadistica-icono">＄</div>
+            <p>Pagos</p>
+            <h2 th:text="${pagosTotal}">0</h2>
+            <span>Revisar pagos →</span>
+        </a>
+
+    </section>
+
+    <!-- INFORMACIÓN RECIENTE -->
+    <section class="panel-contenido">
+
+        <!-- PROPIEDADES -->
+        <div class="panel-tarjeta">
+
+            <div class="tarjeta-encabezado">
+                <div>
+                    <p class="panel-etiqueta">INVENTARIO</p>
+                    <h3>Últimos inmuebles</h3>
+                </div>
+
+                <a th:href="@{/propiedades}">
+                    Ver catálogo →
+                </a>
+            </div>
+
+            <div th:if="${#lists.isEmpty(propiedadesRecientes)}"
+                 class="panel-vacio">
+                Aún no tienes inmuebles registrados.
+            </div>
+
+            <div th:each="propiedad : ${propiedadesRecientes}"
+                 class="registro">
+
+                <div class="registro-icono">
+                    ⌂
+                </div>
+
+                <div class="registro-datos">
+                    <strong th:text="${propiedad.titulo}">
+                        Inmueble
+                    </strong>
+
+                    <small th:text="${propiedad.ciudad + ' | ' + propiedad.tipo}">
+                        Ubicación
+                    </small>
+                </div>
+
+                <span class="registro-estado"
+                      th:text="${propiedad.estado}">
+                    DISPONIBLE
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- CLIENTES -->
+        <div class="panel-tarjeta">
+
+            <div class="tarjeta-encabezado">
+                <div>
+                    <p class="panel-etiqueta">DIRECTORIO</p>
+                    <h3>Clientes recientes</h3>
+                </div>
+
+                <a th:href="@{/clientes}">
+                    Ver directorio →
+                </a>
+            </div>
+
+            <div th:if="${#lists.isEmpty(clientesRecientes)}"
+                 class="panel-vacio">
+                Aún no hay clientes registrados.
+            </div>
+
+            <div th:each="cliente : ${clientesRecientes}"
+                 class="registro">
+
+                <div class="registro-icono cliente-icono">
+                    ♙
+                </div>
+
+                <div class="registro-datos">
+
+                    <strong th:text="${cliente.nombres + ' ' + cliente.apellidos}">
+                        Nombre del cliente
+                    </strong>
+
+                    <small th:text="${cliente.email}">
+                        correo@ejemplo.com
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+
+</body>
+</html>

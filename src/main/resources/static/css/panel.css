@@ -1,0 +1,264 @@
+
+/* PANEL INMOBILIARIO */
+
+.panel-container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 45px 25px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.panel-container,
+.panel-container * {
+    box-sizing: border-box;
+}
+
+/* ENCABEZADO */
+
+.panel-header {
+    background: linear-gradient(120deg, #10243a, #16465a);
+    color: white;
+    border-radius: 20px;
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.panel-etiqueta {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #0b9e90;
+    margin-bottom: 12px;
+}
+
+.panel-header .panel-etiqueta {
+    color: #72e2cf;
+}
+
+.panel-header h1 {
+    font-size: 34px;
+    font-weight: 750;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.panel-descripcion {
+    max-width: 550px;
+    color: #ccdde6;
+    line-height: 1.7;
+}
+
+.panel-header-icono {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.panel-header-icono span {
+    font-size: 65px;
+    color: #72e2cf;
+}
+
+/* ESTADÍSTICAS */
+
+.panel-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0 45px;
+}
+
+.estadistica {
+    background: #ffffff;
+    padding: 26px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: #10243a;
+    transition: 0.2s ease;
+}
+
+.estadistica:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(16,36,58,0.1);
+    text-decoration: none;
+}
+
+.estadistica-icono {
+    background: #e6f7f3;
+    color: #0b8f83;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.estadistica p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.estadistica h2 {
+    font-size: 38px;
+    font-weight: 750;
+    color: #10243a;
+    margin-bottom: 15px;
+}
+
+.estadistica span {
+    color: #0b8f83;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* CONTENIDO */
+
+.panel-contenido {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+}
+
+.panel-tarjeta {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    min-width: 0;
+}
+
+.tarjeta-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.tarjeta-encabezado h3 {
+    font-size: 21px;
+    color: #10243a;
+    font-weight: 700;
+}
+
+.tarjeta-encabezado a {
+    color: #0b8f83;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.registro {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 0;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.registro:last-child {
+    border-bottom: none;
+}
+
+.registro-icono {
+    width: 45px;
+    height: 45px;
+    background: #e6f7f3;
+    color: #0b8f83;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    flex-shrink: 0;
+}
+
+.cliente-icono {
+    background: #e8eefc;
+    color: #3759a5;
+}
+
+.registro-datos {
+    flex: 1;
+    min-width: 0;
+}
+
+.registro-datos strong {
+    display: block;
+    color: #10243a;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.registro-datos small {
+    color: #64748b;
+    display: block;
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+}
+
+.registro-estado {
+    background: #e6f7f3;
+    color: #0b8f83;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.panel-vacio {
+    text-align: center;
+    padding: 35px 10px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .panel-estadisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .panel-contenido {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .panel-container {
+        padding: 20px 15px;
+    }
+
+    .panel-header {
+        padding: 30px 24px;
+    }
+
+    .panel-header h1 {
+        font-size: 26px;
+    }
+
+    .panel-header-icono {
+        display: none;
+    }
+
+    .panel-estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-encabezado {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
